@@ -38,7 +38,7 @@ Content-Type: application/json
 }
 ###
 
-### PASSAGEIROS
+### PASSAGEIRO
 POST http://127.0.0.1:8000/Passageiros/
 Content-Type: application/json
 
@@ -53,7 +53,7 @@ POST http://127.0.0.1:8000/Passageiros/
 Content-Type: application/json
 
 {
-  "id_usuario": 9,
+  "id_usuario": 2,
   "nome_passageiro": "Miriã",
   "media_avaliacao": 5.0
 }
@@ -64,7 +64,7 @@ POST http://127.0.0.1:8000/motoristas
 Content-Type: application/json
 
 {
-  "id_usuario": 6,
+  "id_usuario": 2,
   "nome_motorista": "Fernanda",
   "media_avaliacao": 4.9,
   "cnh": "12345678901"
@@ -124,7 +124,7 @@ Content-Type: application/json
   "ano": 2024,
   "capacidade": 4,
   "propriedade": "Alugado",
-  "id_tipo_combustivel": 5
+  "id_tipo_combustivel": 3
 }
 ###
 
@@ -153,9 +153,9 @@ Content-Type: application/json
 
 {
   "placa": "ABC1234",
-  "id_modelo_veiculo": 3,
+  "id_modelo_veiculo": 4,
   "tem_seguro": true,
-  "id_classe_veiculo": 3
+  "id_classe_veiculo": 1
 }
 ###
 
@@ -164,7 +164,7 @@ POST http://127.0.0.1:8000/motorista-veiculo
 Content-Type: application/json
 
 {
-  "id_motorista": 3,
+  "id_motorista": 1,
   "id_veiculo": 2,
   "datahora_inicio_disponibilidade": "2025-02-10T08:00:00",
   "datahora_fim_disponibilidade": "2025-02-10T18:00:00"
@@ -192,14 +192,25 @@ Content-Type: application/json
 ###
 
 
+### AVALIACAO
+POST http://127.0.0.1:8000/avaliacoes
+Content-Type: application/json
+
+{
+  "nota_passageiro": 4.5,
+  "nota_motorista": 4.8,
+  "datahora_limite": "2025-02-10T18:30:00"
+}
+###
+
 ### CORRIDA
 POST http://127.0.0.1:8000/corridas
 Content-Type: application/json
 
 {
-  "id_passageiro": 6,
-  "id_motorista": 3,
-  "id_servico": 2,
+  "id_passageiro": 3,
+  "id_motorista": 2,
+  "id_servico": 3,
   "id_avaliacao": 1,
   "datahora_inicio": "2025-01-10T08:15:00",
   "datahora_fim": "2025-01-10T08:30:00",
@@ -216,7 +227,7 @@ POST http://127.0.0.1:8000/pagamentos
 Content-Type: application/json
 
 {
-  "id_corrida": 10,
+  "id_corrida": 1,
   "valor": 20,
   "id_metodo_pagamento": 1,
   "datahora_transacao": "2025-01-10T08:35:00"
@@ -224,13 +235,3 @@ Content-Type: application/json
 ###
 
 
-### AVALIACAO
-POST http://127.0.0.1:8000/avaliacoes
-Content-Type: application/json
-
-{
-  "nota_passageiro": 4.5,
-  "nota_motorista": 4.8,
-  "datahora_limite": "2025-02-10T18:30:00"
-}
-###

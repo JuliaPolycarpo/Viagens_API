@@ -4,7 +4,7 @@ from app.database import get_db
 from app.models.passageiro_model import Passageiro
 from app.Schema.passageiro_schema import PassageiroBase, PassageiroResponse
 
-router = APIRouter(prefix="/passageiros", tags=["passageiros"])
+router = APIRouter(prefix="/passageiro", tags=["passageiro"])
 
 #Criar
 @router.post("/", response_model=PassageiroResponse)
