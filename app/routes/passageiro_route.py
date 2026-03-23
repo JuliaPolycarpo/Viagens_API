@@ -10,6 +10,7 @@ router = APIRouter(prefix="/passageiros", tags=["passageiros"])
 @router.post("/", response_model=PassageiroResponse)
 def criar(dados: PassageiroBase, db: Session = Depends(get_db)):
     novo = Passageiro(**dados.model_dump())
+    
     db.add(novo)
     db.commit()
     db.refresh(novo)
@@ -26,8 +27,10 @@ def listar(db: Session = Depends(get_db)):
 @router.get("/{id}", response_model=PassageiroResponse)
 def buscar(id: int, db: Session = Depends(get_db)):
     passageiro = db.query(Passageiro).filter(Passageiro.id_passageiro == id).first()
+   
     if not passageiro:
-        raise HTTPException(404, "Não encontrado")
+        raise HTTPException(404, "Passageiro não encontrado")
+    
     return passageiro
 
 
@@ -37,7 +40,7 @@ def update_passageiro(id: int, dados: PassageiroBase, db: Session = Depends(get_
     passageiro = db.query(Passageiro).filter(Passageiro.id_passageiro == id).first()
 
     if not passageiro:
-        raise HTTPException(404, "Não encontrado")
+        raise HTTPException(404, "Passageiro não encontrado")
 
     for campo, valor in dados.model_dump().items():
         setattr(passageiro, campo, valor)
@@ -53,8 +56,8 @@ def deletar(id: int, db: Session = Depends(get_db)):
     passageiro = db.query(Passageiro).filter(Passageiro.id_passageiro == id).first()
 
     if not passageiro:
-        raise HTTPException(404, "Não encontrado")
+        raise HTTPException(404, "Passageiro não encontrado")
 
     db.delete(passageiro)
     db.commit()
-    return {"msg": "Deletado"}
+    return {"msg": "Passageiro deletado"}

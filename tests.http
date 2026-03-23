@@ -1,0 +1,236 @@
+### USUARIOS
+POST http://127.0.0.1:8000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Filipe Polycarpo",
+  "cpf": "12345678901",
+  "data_nascimento": "2000-09-15",
+  "senha": "123",
+  "email": "filipe@gmail.com",
+  "username": "filipe"
+}
+###
+
+POST http://127.0.0.1:8000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Fernanda Cardozo",
+  "cpf": "98765432100",
+  "data_nascimento": "1998-10-25",
+  "senha": "123",
+  "email": "fernanda@gmail.com",
+  "username": "fernanda"
+}
+###
+
+POST http://127.0.0.1:8000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Miriã Jesus",
+  "cpf": "98765432867",
+  "data_nascimento": "2037-12-17",
+  "senha": "123",
+  "email": "miria.jesus@gmail.com",
+  "username": "Miriã"
+}
+###
+
+### PASSAGEIROS
+POST http://127.0.0.1:8000/Passageiros/
+Content-Type: application/json
+
+{
+  "id_usuario": 1,
+  "nome_passageiro": "Filipe",
+  "media_avaliacao": 4.7
+}
+###
+
+POST http://127.0.0.1:8000/Passageiros/
+Content-Type: application/json
+
+{
+  "id_usuario": 9,
+  "nome_passageiro": "Miriã",
+  "media_avaliacao": 5.0
+}
+###
+
+### MOTORISTAS
+POST http://127.0.0.1:8000/motoristas
+Content-Type: application/json
+
+{
+  "id_usuario": 6,
+  "nome_motorista": "Fernanda",
+  "media_avaliacao": 4.9,
+  "cnh": "12345678901"
+}
+###
+
+### TIPO COMBUSTIVEL
+POST http://127.0.0.1:8000/tipos-combustivel
+Content-Type: application/json
+
+{
+  "descricao": "Gasolina",
+  "fator_carbono": 2.3
+}
+###
+
+POST http://127.0.0.1:8000/tipos-combustivel
+Content-Type: application/json
+
+{
+  "descricao": "Álcool",
+  "fator_carbono": 1.8
+}
+###
+
+POST http://127.0.0.1:8000/tipos-combustivel
+Content-Type: application/json
+
+{
+  "descricao": "Elétrico",
+  "fator_carbono": 0.0
+}
+###
+
+### MODELO VEICULO
+POST http://127.0.0.1:8000/modelos-veiculo
+Content-Type: application/json
+
+{
+  "nome_modelo": "HB20",
+  "fabricante": "Hyundai",
+  "cor": "Branco",
+  "ano": 2020,
+  "capacidade": 4,
+  "propriedade": "Proprio",
+  "id_tipo_combustivel": 1
+}
+###
+
+POST http://127.0.0.1:8000/modelos-veiculo
+Content-Type: application/json
+
+{
+  "nome_modelo": "BYD Seal",
+  "fabricante": "BYD",
+  "cor": "Preto",
+  "ano": 2024,
+  "capacidade": 4,
+  "propriedade": "Alugado",
+  "id_tipo_combustivel": 5
+}
+###
+
+### CLASSE VEICULO
+POST http://127.0.0.1:8000/classes-veiculo
+Content-Type: application/json
+
+{
+  "nome_classe": "UberX",
+  "fator_preco": 1.0
+}
+###
+
+POST http://127.0.0.1:8000/classes-veiculo
+Content-Type: application/json
+
+{
+  "nome_classe": "UberBlack",
+  "fator_preco": 1.7
+}
+###
+
+### VEICULO
+POST http://127.0.0.1:8000/veiculos
+Content-Type: application/json
+
+{
+  "placa": "ABC1234",
+  "id_modelo_veiculo": 3,
+  "tem_seguro": true,
+  "id_classe_veiculo": 3
+}
+###
+
+### MOTORISTA-VEICULO
+POST http://127.0.0.1:8000/motorista-veiculo
+Content-Type: application/json
+
+{
+  "id_motorista": 3,
+  "id_veiculo": 2,
+  "datahora_inicio_disponibilidade": "2025-02-10T08:00:00",
+  "datahora_fim_disponibilidade": "2025-02-10T18:00:00"
+}
+###
+
+### METODO PAGAMENTO
+POST http://127.0.0.1:8000/metodos-pagamento
+Content-Type: application/json
+
+{
+  "descricao": "Pix",
+  "nome_financeira": "Todos"
+}
+###
+
+### SERVICO
+POST http://127.0.0.1:8000/servicos
+Content-Type: application/json
+
+{
+  "nome_servico": "Corrida",
+  "id_classe_minima": 1
+}
+###
+
+
+### CORRIDA
+POST http://127.0.0.1:8000/corridas
+Content-Type: application/json
+
+{
+  "id_passageiro": 6,
+  "id_motorista": 3,
+  "id_servico": 2,
+  "id_avaliacao": 1,
+  "datahora_inicio": "2025-01-10T08:15:00",
+  "datahora_fim": "2025-01-10T08:30:00",
+  "duracao_total": 15,
+  "gps_local_partida": "A",
+  "gps_local_destino": "B",
+  "valor_estimado": 20,
+  "status": "finalizada"
+}
+###
+
+### PAGAMENTO
+POST http://127.0.0.1:8000/pagamentos
+Content-Type: application/json
+
+{
+  "id_corrida": 10,
+  "valor": 20,
+  "id_metodo_pagamento": 1,
+  "datahora_transacao": "2025-01-10T08:35:00"
+}
+###
+
+
+### AVALIACAO
+POST http://127.0.0.1:8000/avaliacoes
+Content-Type: application/json
+
+{
+  "nota_passageiro": 4.5,
+  "nota_motorista": 4.8,
+  "datahora_limite": "2025-02-10T18:30:00"
+}
+###

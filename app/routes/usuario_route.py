@@ -10,7 +10,6 @@ router = APIRouter(prefix="/usuarios", tags=["usuarios"]) #prefix serve para cri
 #Criar Usuario
 @router.post("/", response_model=UsuarioResponse)
 def criar_usuario(usuario: UsuarioCreate, db: Session = Depends(get_db)):
-
     novo_usuario = Usuario( 
         nome=usuario.nome,
         cpf=usuario.cpf,
@@ -22,7 +21,6 @@ def criar_usuario(usuario: UsuarioCreate, db: Session = Depends(get_db)):
     db.add(novo_usuario)
     db.commit()
     db.refresh(novo_usuario)
-
     return novo_usuario
 
 
@@ -41,7 +39,6 @@ def buscar_usuario(id: int, db: Session = Depends(get_db)):
 #Atualizar Usuario
 @router.put("/{id}", response_model=UsuarioResponse)
 def update_usuario(id: int, dados: UsuarioCreate, db: Session = Depends(get_db)):
-
     usuario = db.query(Usuario).filter(Usuario.id_usuario == id).first()
 
     if not usuario:
@@ -52,7 +49,6 @@ def update_usuario(id: int, dados: UsuarioCreate, db: Session = Depends(get_db))
 
     db.commit()
     db.refresh(usuario)
-
     return usuario
 
 
@@ -63,5 +59,4 @@ def deletar_usuario(id: int, db: Session = Depends(get_db)):
     
     db.delete(usuario)
     db.commit()
-
-    return {"msg": "Usuario deletado"}
+    return {"msg": "Usuário deletado"}

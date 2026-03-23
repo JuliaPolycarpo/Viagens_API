@@ -5,7 +5,7 @@ from app.database import Base
 class MotoristaVeiculo(Base):
     __tablename__ = "motorista_veiculo"
 
-    id_motoristaVeiculo = Column(BigInteger, primary_key=True)
+    id_motoristaVeiculo = Column(BigInteger, primary_key=True, autoincrement=True)
     id_motorista = Column(BigInteger, ForeignKey("motorista.id_motorista"), primary_key=True)
     id_veiculo = Column(Integer, ForeignKey("veiculo.id_veiculo"), primary_key=True)
     datahora_inicio_disponibilidade = Column(DateTime)
